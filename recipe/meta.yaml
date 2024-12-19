@@ -1,18 +1,18 @@
 {% set name = "nomad-camels-driver-keysight-e5270b" %}
-{% set version = "0.1.1" %}
+{% set version = "0.1.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/nomad_camels_driver_keysight_e5270b-{{ version }}.tar.gz
-  sha256: c33787020b5a0c5606df4402aa7de8f32e568b2fd31b27eee6e1f781bb6dd074
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/nomad_camels_driver_keysight_e5270b-{{ version }}.tar.gz
+  sha256: 92f53b9ce875a5f5238e812d99437720e431f7f41c06946e24e14b5c61c30ad8
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
