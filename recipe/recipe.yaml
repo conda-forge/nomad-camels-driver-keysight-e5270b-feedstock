@@ -1,7 +1,6 @@
 schema_version: 1
 
 context:
-  python_min: "3.9.6"
   name: nomad-camels-driver-keysight-e5270b
   version: "0.1.2"
 
@@ -20,7 +19,7 @@ build:
 
 requirements:
   host:
-    - python 3.9.6.*
+    - python ${{ python_min }}.*
     - setuptools >=61.0
     - pip
   run:
@@ -33,7 +32,9 @@ tests:
       imports:
         - nomad_camels_driver_keysight_e5270b
       pip_check: true
-      python_version: ${{ python_min }}
+      python_version:
+        - ${{ python_min }}
+        - "*"
 
 about:
   summary: Device driver for the Keysight E5270B Precision IV Analyzer.
