@@ -1,0 +1,46 @@
+schema_version: 1
+
+context:
+  python_min: "3.9.6"
+  name: nomad-camels-driver-keysight-e5270b
+  version: "0.1.2"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/nomad_camels_driver_keysight_e5270b-${{ version }}.tar.gz
+  sha256: 92f53b9ce875a5f5238e812d99437720e431f7f41c06946e24e14b5c61c30ad8
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python 3.9.6.*
+    - setuptools >=61.0
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - pyvisa
+    - pyvisa-py
+
+tests:
+  - python:
+      imports:
+        - nomad_camels_driver_keysight_e5270b
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: Device driver for the Keysight E5270B Precision IV Analyzer.
+  license: LGPL-2.1-or-later
+  license_file: LICENSE.txt
+  homepage: https://github.com/FAU-LAP/CAMELS_drivers
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
